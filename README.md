@@ -37,8 +37,8 @@ An enterprise-grade identity setup and password analysis dashboard. This archite
 > *The system actively warning the user against weak credentials and offering dynamically generated secure alternatives.*
 
 ### 3. AI Mnemonic Visual Generation
-*(Replace the link below with your actual screenshot)*
-![AI Generation Preview](docs/images/ai_generation_preview.png)
+<img width="1763" height="1515" alt="image" src="https://github.com/user-attachments/assets/72e36b90-8caa-4c4a-891c-cfabc93adae0" />
+
 > *The Python FastAPI backend securely passing prompts to the local Stable Diffusion model to generate a downloadable visual asset.*
 
 ---
