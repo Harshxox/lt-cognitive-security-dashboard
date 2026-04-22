@@ -22,14 +22,17 @@ An enterprise-grade identity setup and password analysis dashboard. This archite
 ## 📸 System Architecture & Previews
 
 ### 1. The Security Dashboard & Threat Intel Feed
-*(Replace the link below with your actual screenshot)*
-![Dashboard Preview](docs/images/dashboard_preview.png)<img width="468" height="619" alt="image" src="https://github.com/user-attachments/assets/4e519175-6723-4246-97d8-96624ccdc698" />
+<img width="1763" height="987" alt="image" src="https://github.com/user-attachments/assets/b8140e99-401c-4d5e-8ff8-43673b75be57" />
+<img width="1763" height="987" alt="image" src="https://github.com/user-attachments/assets/f4935f18-091f-4944-a66d-9975cf944ae2" />
+
+
+
 
 > *The main UI featuring real-time password entropy scoring and the live global threat intelligence marquee.*
 
 ### 2. Live Data Validation & UI Feedback
-*(Replace the link below with your actual screenshot)*
-![Validation Preview](docs/images/validation_preview.png)<img width="1387" height="832" alt="image" src="https://github.com/user-attachments/assets/a1be5cdc-7d17-40c6-8b96-b8be8f8bcfe9" />
+<img width="1763" height="1464" alt="image" src="https://github.com/user-attachments/assets/285464e6-b511-4dba-b9be-15bf23d219ca" />
+
 
 > *The system actively warning the user against weak credentials and offering dynamically generated secure alternatives.*
 
