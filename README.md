@@ -61,13 +61,23 @@ An enterprise-grade identity setup and password analysis dashboard. This archite
 
 ---
 
-## 🚀 Installation & Setup
+### How to Run the L&T Cognitive Security Dashboard
 
-### Prerequisites
-1. Python 3.8 or higher installed on your system.
-2. A code editor like VS Code with the **Live Server** extension installed.
+**Step 1: Install the Python Dependencies**
+Open your terminal inside the project folder and run these commands to set up your environment:
+1. `python -m venv venv` (Creates a secure virtual environment)
+2. `venv\Scripts\activate` (Activates the environment for Windows)
+3. `pip install fastapi uvicorn pydantic diffusers transformers torch accelerate requests` (Installs the enterprise tech stack)
 
-### Step 1: Clone the Repository
-```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-cd YOUR_REPO_NAME
+**Step 2: Start the AI Backend**
+In the same terminal, start the Python server by running:
+`uvicorn server:app`
+
+*⚠️ Note: The first time you run this command, Python will silently download the Stable Diffusion AI model (~4GB). Please ensure you have a stable internet connection and wait for the terminal to print "✅ SUCCESS: Model Ready" before moving to the next step.*
+
+**Step 3: Start the Frontend Interface**
+1. Open the project folder in Visual Studio Code.
+2. Right-click the `index.html` file in your file explorer.
+3. Select **"Open with Live Server"**.
+
+The security dashboard will automatically open in your browser, fetch the live global threat intelligence, and connect directly to your local Python AI engine!
