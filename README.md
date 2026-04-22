@@ -23,7 +23,8 @@ An enterprise-grade identity setup and password analysis dashboard. This archite
 
 ### 1. The Security Dashboard & Threat Intel Feed
 *(Replace the link below with your actual screenshot)*
-![Dashboard Preview](docs/images/dashboard_preview.png)
+![Dashboard Preview](docs/images/dashboard_preview.png)<img width="468" height="619" alt="image" src="https://github.com/user-attachments/assets/4e519175-6723-4246-97d8-96624ccdc698" />
+
 > *The main UI featuring real-time password entropy scoring and the live global threat intelligence marquee.*
 
 ### 2. Live Data Validation & UI Feedback
