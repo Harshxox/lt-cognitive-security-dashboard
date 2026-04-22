@@ -29,7 +29,8 @@ An enterprise-grade identity setup and password analysis dashboard. This archite
 
 ### 2. Live Data Validation & UI Feedback
 *(Replace the link below with your actual screenshot)*
-![Validation Preview](docs/images/validation_preview.png)
+![Validation Preview](docs/images/validation_preview.png)<img width="1387" height="832" alt="image" src="https://github.com/user-attachments/assets/a1be5cdc-7d17-40c6-8b96-b8be8f8bcfe9" />
+
 > *The system actively warning the user against weak credentials and offering dynamically generated secure alternatives.*
 
 ### 3. AI Mnemonic Visual Generation
