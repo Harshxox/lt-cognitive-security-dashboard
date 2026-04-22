@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Security | L&T</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://unpkg.com/compromise"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cyber-theme">
+
+    <!-- ANIMATED ISO BACKGROUND -->
+    <div id="iso-bg">
+        <div class="iso-wrap">
+            <div class="iso-grid" id="tileGrid"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="12" height="18" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 0L0 14H8L6 24L18 9H10L12 0Z" fill="url(#paint0_linear)" />
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="9" y1="0" x2="9" y2="24"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FFAd4D" />
+                                <stop offset="1" stop-color="#FF5a5a" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>AGORAX</h1>
+                    <span>PRIV_SYS_V2</span>
+                </div>
+            </div>
+            <div class="cyber-ticker">
+                <div class="ticker-wrapper">
+                    <div class="ticker-content">
+                        <span class="ticker-item">// FACT_1: 81% OF BREACHES LEVERAGE WEAK OR STOLEN PASSWORDS</span>
+                        <span class="ticker-item">// FACT_2: BRUTE FORCE ATTACKS CAN CRACK AN 8-CHAR PASSWORD IN
+                            SECONDS</span>
+                        <span class="ticker-item">// FACT_3: MFA BLOCKS 99.9% OF AUTOMATED ATTACKS</span>
+                        <span class="ticker-item">// FACT_4: SOCIAL ENGINEERING CAUSES 98% OF CYBERATTACKS</span>
+                        <span class="ticker-item">// FACT_5: HUMAN ERROR ACCOUNTS FOR 95% OF INCIDENTS</span>
+                    </div>
+                    <div class="ticker-content">
+                        <span class="ticker-item">// FACT_1: 81% OF BREACHES LEVERAGE WEAK OR STOLEN PASSWORDS</span>
+                        <span class="ticker-item">// FACT_2: BRUTE FORCE ATTACKS CAN CRACK AN 8-CHAR PASSWORD IN
+                            SECONDS</span>
+                        <span class="ticker-item">// FACT_3: MFA BLOCKS 99.9% OF AUTOMATED ATTACKS</span>
+                        <span class="ticker-item">// FACT_4: SOCIAL ENGINEERING CAUSES 98% OF CYBERATTACKS</span>
+                        <span class="ticker-item">// FACT_5: HUMAN ERROR ACCOUNTS FOR 95% OF INCIDENTS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="status-btn">ENCRYPTION ACTIVE</div>
+            <button class="primary-btn nav-btn">LAUNCH SCANNER</button>
+            <button class="icon-btn" id="themeToggle" title="Toggle light / dark theme">☼</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-tag">🔒 THE FIRST AUCTION-AS-A-SERVICE WITH PRIVACY ON WEB3</div>
+            <h1 class="hero-title">YOUR<br>STRATEGY<br>IS YOUR<br><span class="highlight">EDGE.</span><br>KEEP
+                IT<br>PRIVATE.</h1>
+        </div>
+
+        <main class="content-section">
+            <div class="terminal-card">
+
+                <div id="step1" class="step-container">
+                    <div class="step-header">
+                        <div class="status-badge">
+                            <span class="icon">👤</span>
+                            <div>
+                                <span class="badge-title">SYSTEM_LIVE</span>
+                                <span class="badge-subtitle">STRATEGIC SHIELD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <h2>SECURITY PROFILE</h2>
+                        <p class="tech-text">We verify your inputs against your personal footprint to prevent targeted
+                            attacks.</p>
+                        <div class="form-grid">
+                            <div class="input-wrapper">
+                                <label>FIRST_NAME</label>
+                                <input type="text" id="firstName" placeholder="ENTER FIRST NAME">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>LAST_NAME</label>
+                                <input type="text" id="lastName" placeholder="ENTER LAST NAME">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>DOB</label>
+                                <input type="date" id="dob">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>PHONE</label>
+                                <input type="tel" id="phone" placeholder="ENTER PHONE">
+                            </div>
+                        </div>
+                        <button id="continueBtn" class="primary-btn block-btn">INITIALIZE SETUP -></button>
+                    </div>
+                </div>
+
+                <div id="step2" class="step-container hidden">
+                    <div class="step-header">
+                        <div class="status-badge">
+                            <span class="icon">🛡️</span>
+                            <div>
+                                <span class="badge-title">PHASE_02</span>
+                                <span class="badge-subtitle">VULNERABILITY ANALYSIS</span>
+                            </div>
+                        </div>
+                        <button id="backBtn" class="text-btn"><- EDIT PROFILE</button>
+                    </div>
+                    <div class="step-content">
+                        <h2>ENCRYPTED EVALUATION</h2>
+                        <p class="tech-text">Confidential strength analysis infrastructure. Every check is isolated.</p>
+                        <div class="input-wrapper pwd-wrapper">
+                            <input type="password" id="passwordInput" placeholder="ENTER PASSWORD...">
+                            <button id="toggleView" class="eye-btn">👁️</button>
+                        </div>
+                        <div class="live-rules">
+                            <span id="rule-len" class="rule">12+ CHARS</span>
+                            <span id="rule-up" class="rule">UPPERCASE</span>
+                            <span id="rule-num" class="rule">NUMBER</span>
+                            <span id="rule-sym" class="rule">SYMBOL</span>
+                        </div>
+                        <div class="meter-track">
+                            <div class="meter-fill" id="meterBar"></div>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="label">STRENGTH</span>
+                                <span class="value highlight-text" id="strengthText">NONE</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="label">ENTROPY</span>
+                                <span class="value" id="entropyText">0 BITS</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="label">CRACK TIME</span>
+                                <span class="value" id="crackTime">0S</span>
+                            </div>
+                        </div>
+                        <div id="feedbackBox" class="alert-box hidden">
+                            <h4>[!] SECURITY WARNINGS:</h4>
+                            <ul id="warningList"></ul>
+                        </div>
+                        <div id="aiSuggestionsBox" class="suggestions-box hidden">
+                            <h4>SYSTEM AUTO-FIX RECOMMENDATIONS:</h4>
+                            <div class="suggestion-list">
+                                <button class="suggestion-btn" id="sug1"></button>
+                                <button class="suggestion-btn" id="sug2"></button>
+                                <button class="suggestion-btn" id="sug3"></button>
+                            </div>
+                        </div>
+                        <button id="openMnemonicBtn" class="primary-btn active-state block-btn">LAUNCH AI MNEMONIC GEN
+                            -></button>
+                    </div>
+                </div>
+
+                <div id="step3" class="step-container hidden">
+                    <div class="step-header">
+                        <div class="status-badge">
+                            <span class="icon">🚀</span>
+                            <div>
+                                <span class="badge-title">PHASE_03</span>
+                                <span class="badge-subtitle">NEURAL ENGINE</span>
+                            </div>
+                        </div>
+                        <button id="backToAnalyzerBtn" class="text-btn"><- BACK TO ANALYSIS</button>
+                    </div>
+                    <div class="step-content">
+                        <h2>SECURE GENERATOR</h2>
+                        <p class="tech-text">Provide seed words to synthesize an unbreakable visual mnemonic hash.</p>
+                        <div class="form-grid single-col">
+                            <div class="input-wrapper">
+                                <label>SEED_01</label>
+                                <input type="text" id="ans1" placeholder="...">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>SEED_02</label>
+                                <input type="text" id="ans2" placeholder="...">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>SEED_03</label>
+                                <input type="text" id="ans3" placeholder="...">
+                            </div>
+                        </div>
+                        <button id="buildMnemonicBtn" class="primary-btn highlight-btn block-btn">EXECUTE GENERATION
+                            -></button>
+                        <div id="mnemonicResult" class="result-box hidden">
+                            <div class="password-output">
+                                <span class="label">FINAL MNEMONIC HASH:</span>
+                                <div class="hash-group">
+                                    <h2 id="finalMnemonic" class="glitch-text"></h2>
+                                    <button id="copyHashBtn" class="copy-btn">[COPY]</button>
+                                </div>
+                            </div>
+                            <div class="ai-canvas" id="imageStub">
+                                <div class="canvas-icon" id="stubIcon">⏳</div>
+                                <div class="canvas-status" id="promptStubText">AWAITING LOCAL NEURAL ENGINE...</div>
+                                <img id="generatedImage" src="" alt="AI Output" class="hidden">
+                                <button id="downloadImageBtn" class="download-btn hidden">[↓]
+                                    DOWNLOAD_ASSET.JPG</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div class="metrics-bar">
+        <span>METRIC_ID: 0x8A1B2C // ASSET_RECOVERY_SYNC</span>
+    </div>
+
+    <!-- ISO BG BUILDER -->
+    <script>
+        (function () {
+            const types = [
+                { cls: 't-shield', label: 'FIREWALL', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M40 8L14 20v20c0 15 11 28 26 32 15-4 26-17 26-32V20L40 8z" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><path d="M30 40l7 7 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+                { cls: 't-lock', label: 'ENCRYPTED', html: `<svg viewBox="0 0 80 80" fill="none"><rect x="18" y="38" width="44" height="30" rx="6" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><path d="M28 38V28a12 12 0 0124 0v10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="40" cy="53" r="4" fill="currentColor"/><line x1="40" y1="57" x2="40" y2="63" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>` },
+                { cls: 't-eye', label: 'MONITORING', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M12 40s10-18 28-18 28 18 28 18-10 18-28 18S12 40 12 40z" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><circle cx="40" cy="40" r="8" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.12)"/><circle cx="43" cy="37" r="2" fill="currentColor"/></svg>` },
+                { cls: 't-skull', label: 'THREAT', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M40 12c-14 0-22 9-22 20 0 7 4 13 10 17v7h24v-7c6-4 10-10 10-17 0-11-8-20-22-20z" stroke="currentColor" stroke-width="2.5" fill="rgba(255,51,102,0.06)"/><rect x="28" y="49" width="8" height="7" rx="2" stroke="currentColor" stroke-width="2"/><rect x="44" y="49" width="8" height="7" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="34" r="5" stroke="currentColor" stroke-width="2" fill="rgba(255,51,102,0.15)"/><circle cx="48" cy="34" r="5" stroke="currentColor" stroke-width="2" fill="rgba(255,51,102,0.15)"/></svg>` },
+                { cls: 't-key', label: 'AUTH KEY', html: `<svg viewBox="0 0 80 80" fill="none"><circle cx="30" cy="36" r="14" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><path d="M40 42l22 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M54 56l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M60 62l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="30" cy="36" r="5" fill="currentColor" opacity=".4"/></svg>` },
+                { cls: 't-finger', label: 'BIOMETRIC', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M27 62c-4-5-6-11-6-18a19 19 0 0138 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M33 62c-2-3-4-7-4-14a11 11 0 0122 0c0 4-.5 8-2 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M40 62v-6a3 3 0 016 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>` },
+                { cls: 't-vpn', label: 'VPN TUNNEL', html: `<svg viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="40" rx="28" ry="18" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><ellipse cx="40" cy="40" rx="14" ry="18" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="12" y1="40" x2="68" y2="40" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><circle cx="40" cy="40" r="4" fill="currentColor"/></svg>` },
+                { cls: 't-alert', label: 'INTRUSION', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M40 14L10 66h60L40 14z" stroke="currentColor" stroke-width="2.5" fill="rgba(255,51,102,0.06)" stroke-linejoin="round"/><line x1="40" y1="36" x2="40" y2="52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="58" r="2.5" fill="currentColor"/></svg>` },
+                { cls: 't-bars', label: 'NETWORK', bars: true },
+                { cls: 't-code', label: 'HASH DATA', code: true },
+            ];
+            const grid = document.getElementById('tileGrid');
+            for (let i = 0; i < 64; i++) {
+                const t = types[i % types.length];
+                const tile = document.createElement('div');
+                tile.className = `iso-tile ${t.cls}`;
+                let inner = '<div class="iso-scan"></div>';
+                if (t.bars) {
+                    inner += `<div class="iso-bars">${[28, 38, 20, 44, 34, 26, 40].map(v => `<span style="height:${v}px"></span>`).join('')}</div>`;
+                } else if (t.code) {
+                    inner += `<div class="iso-code">${[110, 80, 100, 60, 90, 70].map(v => `<i style="width:${v}px"></i>`).join('')}</div>`;
+                } else {
+                    inner += t.html;
+                }
+                inner += `<span class="iso-label">${t.label}</span>`;
+                tile.innerHTML = inner;
+                grid.appendChild(tile);
+            }
+        })();
+    </script>
+
+    <!-- THEME TOGGLE -->
+    <script>
+        (function () {
+            const btn = document.getElementById('themeToggle');
+            const KEY = 'agorax-theme';
+
+            // restore saved preference on load
+            if (localStorage.getItem(KEY) === 'light') {
+                document.body.classList.add('light-theme');
+                btn.textContent = '☾';
+            }
+
+            btn.addEventListener('click', function () {
+                const isLight = document.body.classList.toggle('light-theme');
+                btn.textContent = isLight ? '☾' : '☼';
+                localStorage.setItem(KEY, isLight ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
