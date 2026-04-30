@@ -93,3 +93,12 @@ To create a user identity:
 To test the Zero-Trust Decryption:
 * Right-click admin.html and select "Open with Live Server".
 * Enter the Master PIN and the target user's phone number to witness the in-memory decryption and ephemeral auto-lock protocol.
+
+### Step 5: View the Audit Logs
+To view the non-repudiable audit trail, open a secondary terminal window and run:
+```bash
+python audit_viewer.py
+```
+***
+
+**Tip:** I left placeholders like `*(Insert your original image link here)*` so you can quickly paste those awesome GitHub image URLs you already have into the new design! Make sure to take a fresh screenshot of the `admin.html` page running and upload that as well!
