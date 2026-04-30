@@ -25,11 +25,12 @@ An enterprise-grade Identity Setup and Data Vault system designed for high-secur
 ## 📸 System Architecture & Previews
 
 ### 1. The Setup Dashboard & Threat Intel
-*(Insert your original image link here)*
+![Landing](./photos/landing.jpeg)
+![Password](./photos/pass.jpeg)
 > *The main UI featuring real-time password entropy scoring and the live global threat intelligence marquee.*
 
 ### 2. AI Mnemonic Visual Generation
-*(Insert your original image link here)*
+![Image](./photos/img.jpeg)
 > *The Python FastAPI backend securely passing prompts to the local Stable Diffusion model to generate a downloadable visual asset.*
 
 ### 3. The Zero-Trust Admin Decryption Portal
