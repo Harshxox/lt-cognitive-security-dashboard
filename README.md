@@ -72,9 +72,15 @@ pip install fastapi uvicorn pydantic diffusers transformers torch accelerate pym
 ### Step 2: Configure the Secret Vault
 * 1.Create a file named .env in the root directory.
 * 2.Ensure you have the required environmental variables configured:
-
+```bash
 **AES_SECRET_KEY (Symmetric encryption key)**
 
 **MONGO_DB_URI (Atlas Cluster Connection String)**
 
 **ADMIN_PIN_HASH (Bcrypt hash of the master admin password)**
+```
+### Step 3: Start the Backend Server
+In your activated terminal, boot the FastAPI server:
+```bash
+uvicorn server:app
+```
