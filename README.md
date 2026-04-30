@@ -1,83 +1,77 @@
-# 🛡️ Zero-Trust Cognitive Security & Visual Auth Dashboard
+# 🛡️ Agorax: Zero-Trust Identity Vault & Admin Portal
 
 ![L&T Security Project](https://img.shields.io/badge/Project-L%26T_Internship-0284c7?style=for-the-badge&logo=shield)
+![Architecture](https://img.shields.io/badge/Architecture-Zero_Trust-black?style=for-the-badge&logo=security)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 
-An enterprise-grade identity setup and password analysis dashboard. This architecture moves beyond standard text-based security by introducing **Cognitive Visual Mnemonics** powered by local AI, **Live Cyber Threat Intelligence**, and zero-trust **k-Anonymity** breach verification.
+An enterprise-grade Identity Setup and Data Vault system designed for high-security environments. This architecture moves beyond standard text-based security by introducing **Cognitive Visual Mnemonics** powered by local AI, and couples it with a **Zero-Knowledge Backend**, AES-256 encryption, and an immutable cryptographic audit trail.
 
 ---
 
-## ✨ Enterprise Features
+## ✨ Enterprise Cybersecurity Features
 
-* **📡 Live Cyber Threat Intelligence:** Integrates a real-time RSS feed (The Hacker News) into the dashboard marquee to display active global threats.
-* **🧠 Targeted Attack Prevention:** Utilizes NLP (`compromise.js`) and `zxcvbn` to evaluate passwords against the user's localized personal data, preventing social-engineering attacks.
-* **🔒 k-Anonymity Breach Verification:** Cryptographically hashes passwords locally and securely queries the *Have I Been Pwned* database without exposing the raw hash over the network.
+* **🗄️ Zero-Knowledge Architecture:** The Python backend utilizes `.env` vault isolation and `bcrypt` hashing. The master admin PIN is never stored in plain text, ensuring the system remains secure even if the source code or server is compromised.
+* **🔐 Data-at-Rest Encryption (AES-256):** All sensitive user credentials and base64 visual assets are symmetrically encrypted before being pushed to the MongoDB Atlas cloud cluster.
+* **🛡️ Brute-Force Rate Limiting:** The API is shielded by `slowapi`. Automated attacks (more than 5 requests/minute per IP) result in an instant connection drop and temporary IP ban.
+* **📜 Immutable Audit Logging:** Every interaction with the decryption vault (successful or failed) writes a permanent, non-repudiable log documenting the timestamp, target, status, and the executing IP address.
+* **🧠 Targeted Attack Prevention:** Utilizes NLP (`compromise.js`) and `zxcvbn` to evaluate passwords against the user's localized personal data to prevent social-engineering attacks.
 * **🎨 Cognitive Visual Mnemonic AI:** Uses a local, GPU-accelerated **Stable Diffusion Turbo** model to generate highly detailed visual memory anchors combining user-selected words and dynamically generated security numbers.
-* **💎 Playful Glassmorphism UI:** A fully responsive, modern interface featuring smooth animations and a Dark/Light mode toggle.
 
 ---
 
 ## 📸 System Architecture & Previews
 
-### 1. The Security Dashboard & Threat Intel Feed
-<img width="1763" height="987" alt="image" src="https://github.com/user-attachments/assets/b8140e99-401c-4d5e-8ff8-43673b75be57" />
-<img width="1763" height="987" alt="image" src="https://github.com/user-attachments/assets/f4935f18-091f-4944-a66d-9975cf944ae2" />
-
-
-
-
+### 1. The Setup Dashboard & Threat Intel
+*(Insert your original image link here)*
 > *The main UI featuring real-time password entropy scoring and the live global threat intelligence marquee.*
 
-### 2. Live Data Validation & UI Feedback
-<img width="1763" height="1464" alt="image" src="https://github.com/user-attachments/assets/285464e6-b511-4dba-b9be-15bf23d219ca" />
-
-
-> *The system actively warning the user against weak credentials and offering dynamically generated secure alternatives.*
-
-### 3. AI Mnemonic Visual Generation
-<img width="1763" height="1515" alt="image" src="https://github.com/user-attachments/assets/72e36b90-8caa-4c4a-891c-cfabc93adae0" />
-
+### 2. AI Mnemonic Visual Generation
+*(Insert your original image link here)*
 > *The Python FastAPI backend securely passing prompts to the local Stable Diffusion model to generate a downloadable visual asset.*
+
+### 3. The Zero-Trust Admin Decryption Portal
+*(Add a screenshot of your new admin.html interface here)*
+> *The restricted admin dashboard. Data is decrypted entirely in-memory and features a 15-second ephemeral auto-lock to prevent "shoulder surfing" data leaks.*
 
 ---
 
 ## 🛠️ Technology Stack
 
-**Frontend (The Face):**
-* HTML5 / CSS3 (Glassmorphism Design System)
+**Frontend (Client Node):**
+* HTML5 / CSS3 (Glassmorphism Cyber Theme)
 * Vanilla JavaScript (ES6+)
 * `CryptoJS` (Client-side SHA-1 hashing)
 * `zxcvbn.js` (Algorithmic password strength estimation)
-* `compromise.js` (Natural Language Processing)
 
-**Backend & AI (The Brain):**
+**Backend & AI Engine (The Vault):**
 * Python 3.10+
 * FastAPI & Uvicorn (High-performance API routing)
-* `requests` & `xml.etree` (External threat intel scraping)
-* PyTorch & HuggingFace Diffusers
-* **AI Model:** `stabilityai/sd-turbo` (Local Execution)
+* `cryptography.fernet` (AES-256 Encryption)
+* `bcrypt` (Cryptographic Password Hashing)
+* `slowapi` (IP-based Rate Limiting)
+* `pymongo` (Cloud Database Integration)
+* PyTorch & HuggingFace Diffusers (`stabilityai/sd-turbo`)
+
+**Infrastructure:**
+* MongoDB Atlas Cloud Cluster
 
 ---
 
-### How to Run the L&T Cognitive Security Dashboard
+## 🚀 How to Run the L&T Vault Architecture
 
-**Step 1: Install the Python Dependencies**
-Open your terminal inside the project folder and run these commands to set up your environment:
-1. `python -m venv venv` (Creates a secure virtual environment)
-2. `venv\Scripts\activate` (Activates the environment for Windows)
-3. `pip install fastapi uvicorn pydantic diffusers transformers torch accelerate requests` (Installs the enterprise tech stack)
-
-**Step 2: Start the AI Backend**
-In the same terminal, start the Python server by running:
-`uvicorn server:app`
-
-*⚠️ Note: The first time you run this command, Python will silently download the Stable Diffusion AI model (~4GB). Please ensure you have a stable internet connection and wait for the terminal to print "✅ SUCCESS: Model Ready" before moving to the next step.*
-
-**Step 3: Start the Frontend Interface**
-1. Open the project folder in Visual Studio Code.
-2. Right-click the `index.html` file in your file explorer.
-3. Select **"Open with Live Server"**.
-
-The security dashboard will automatically open in your browser, fetch the live global threat intelligence, and connect directly to your local Python AI engine!
+### Step 1: Initialize the Environment
+Open your terminal inside the project folder and run these commands to set up the Python environment:
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install fastapi uvicorn pydantic diffusers transformers torch accelerate pymongo cryptography python-dotenv slowapi bcrypt
+```
+### Step 2: Configure the Secret Vault
+* 1.Create a file named .env in the root directory.
+* 2.Ensure you have the required environmental variables configured:
+** AES_SECRET_KEY (Symmetric encryption key)
+** MONGO_DB_URI (Atlas Cluster Connection String)
+** ADMIN_PIN_HASH (Bcrypt hash of the master admin password)
