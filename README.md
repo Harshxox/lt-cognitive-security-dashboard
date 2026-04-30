@@ -90,3 +90,6 @@ uvicorn server:app
 To create a user identity:
 * Open the project folder in Visual Studio Code.
 * Right-click index.html and select "Open with Live Server".
+To test the Zero-Trust Decryption:
+* Right-click admin.html and select "Open with Live Server".
+* Enter the Master PIN and the target user's phone number to witness the in-memory decryption and ephemeral auto-lock protocol.
