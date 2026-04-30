@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Security Admin | L&T</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cyber-theme">
+
+    <!-- ANIMATED ISO BACKGROUND -->
+    <div id="iso-bg">
+        <div class="iso-wrap">
+            <div class="iso-grid" id="tileGrid"></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR (MATCHING UI) -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="12" height="18" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 0L0 14H8L6 24L18 9H10L12 0Z" fill="url(#paint0_linear)" />
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="9" y1="0" x2="9" y2="24" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FFAd4D" />
+                                <stop offset="1" stop-color="#FF5a5a" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>AGORAX</h1>
+                    <span>ADMIN_PORTAL</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="status-btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.1);">RESTRICTED ACCESS</div>
+            <button class="icon-btn" id="themeToggle" title="Toggle light / dark theme">☼</button>
+        </div>
+    </nav>
+
+    <!-- MAIN ADMIN INTERFACE -->
+    <div class="container" style="display: flex; justify-content: center; align-items: center; min-height: 80vh;">
+        <main class="content-section" style="width: 100%; max-width: 600px;">
+            <div class="terminal-card">
+
+                <div class="step-container">
+                    <div class="step-header">
+                        <div class="status-badge">
+                            <span class="icon">🛡️</span>
+                            <div>
+                                <span class="badge-title">SYSTEM_ADMIN</span>
+                                <span class="badge-subtitle">ZERO-TRUST RECOVERY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <h2>SECURE DECRYPTION</h2>
+                        <p class="tech-text">Provide authorization credentials to access the encrypted vault.</p>
+
+                        <div class="form-grid single-col">
+                            <div class="input-wrapper">
+                                <label>ADMIN_PIN</label>
+                                <input type="password" id="adminPin" placeholder="ENTER MASTER PIN">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>TARGET_PHONE</label>
+                                <input type="text" id="targetPhone" placeholder="ENTER USER PHONE">
+                            </div>
+                        </div>
+
+                        <button id="decryptBtn" class="primary-btn block-btn" style="margin-top: 20px;">AUTHORIZE DECRYPTION -></button>
+                        
+                        <div id="errorMsg" class="alert-box hidden" style="margin-top: 20px; text-align: center;"></div>
+
+                        <!-- DECRYPTED RESULTS BOX -->
+                        <div id="resultBox" class="result-box hidden" style="margin-top: 30px;">
+                            <div class="password-output">
+                                <span class="label" id="userName" style="color: var(--accent);">IDENTITY: AWAITING...</span>
+                                <div class="hash-group">
+                                    <h2 id="userPassword" class="glitch-text" style="font-size: 1.5rem; letter-spacing: 2px;"></h2>
+                                </div>
+                            </div>
+                            <div class="ai-canvas" style="margin-top: 20px; padding: 0;">
+                                <img id="retrievedImage" src="" alt="Decrypted Mnemonic" style="width: 100%; border-radius: 8px;">
+                                <p class="tech-text" style="color: var(--accent); margin-top: 15px; text-align: center; font-weight: bold;">
+                                    ⚠️ AUTO-LOCKING IN <span id="timer">15</span> SECONDS...
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ISO BG BUILDER (Keeps your animated background) -->
+    <script>
+        (function () {
+            const types = [
+                { cls: 't-shield', label: 'FIREWALL', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M40 8L14 20v20c0 15 11 28 26 32 15-4 26-17 26-32V20L40 8z" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><path d="M30 40l7 7 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>` },
+                { cls: 't-lock', label: 'ENCRYPTED', html: `<svg viewBox="0 0 80 80" fill="none"><rect x="18" y="38" width="44" height="30" rx="6" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><path d="M28 38V28a12 12 0 0124 0v10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="40" cy="53" r="4" fill="currentColor"/><line x1="40" y1="57" x2="40" y2="63" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>` },
+                { cls: 't-eye', label: 'MONITORING', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M12 40s10-18 28-18 28 18 28 18-10 18-28 18S12 40 12 40z" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><circle cx="40" cy="40" r="8" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.12)"/><circle cx="43" cy="37" r="2" fill="currentColor"/></svg>` },
+                { cls: 't-skull', label: 'THREAT', html: `<svg viewBox="0 0 80 80" fill="none"><path d="M40 12c-14 0-22 9-22 20 0 7 4 13 10 17v7h24v-7c6-4 10-10 10-17 0-11-8-20-22-20z" stroke="currentColor" stroke-width="2.5" fill="rgba(255,51,102,0.06)"/><rect x="28" y="49" width="8" height="7" rx="2" stroke="currentColor" stroke-width="2"/><rect x="44" y="49" width="8" height="7" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="34" r="5" stroke="currentColor" stroke-width="2" fill="rgba(255,51,102,0.15)"/><circle cx="48" cy="34" r="5" stroke="currentColor" stroke-width="2" fill="rgba(255,51,102,0.15)"/></svg>` },
+                { cls: 't-key', label: 'AUTH KEY', html: `<svg viewBox="0 0 80 80" fill="none"><circle cx="30" cy="36" r="14" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><path d="M40 42l22 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M54 56l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M60 62l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="30" cy="36" r="5" fill="currentColor" opacity=".4"/></svg>` },
+                { cls: 't-vpn', label: 'VPN TUNNEL', html: `<svg viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="40" rx="28" ry="18" stroke="currentColor" stroke-width="2.5" fill="rgba(203,255,0,0.06)"/><ellipse cx="40" cy="40" rx="14" ry="18" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="12" y1="40" x2="68" y2="40" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><circle cx="40" cy="40" r="4" fill="currentColor"/></svg>` },
+                { cls: 't-bars', label: 'NETWORK', bars: true },
+                { cls: 't-code', label: 'HASH DATA', code: true },
+            ];
+            const grid = document.getElementById('tileGrid');
+            for (let i = 0; i < 64; i++) {
+                const t = types[i % types.length];
+                const tile = document.createElement('div');
+                tile.className = `iso-tile ${t.cls}`;
+                let inner = '<div class="iso-scan"></div>';
+                if (t.bars) {
+                    inner += `<div class="iso-bars">${[28, 38, 20, 44, 34, 26, 40].map(v => `<span style="height:${v}px"></span>`).join('')}</div>`;
+                } else if (t.code) {
+                    inner += `<div class="iso-code">${[110, 80, 100, 60, 90, 70].map(v => `<i style="width:${v}px"></i>`).join('')}</div>`;
+                } else {
+                    inner += t.html;
+                }
+                inner += `<span class="iso-label">${t.label}</span>`;
+                tile.innerHTML = inner;
+                grid.appendChild(tile);
+            }
+        })();
+    </script>
+
+    <!-- THEME TOGGLE -->
+    <script>
+        (function () {
+            const btn = document.getElementById('themeToggle');
+            const KEY = 'agorax-theme';
+            if (localStorage.getItem(KEY) === 'light') {
+                document.body.classList.add('light-theme');
+                btn.textContent = '☾';
+            }
+            btn.addEventListener('click', function () {
+                const isLight = document.body.classList.toggle('light-theme');
+                btn.textContent = isLight ? '☾' : '☼';
+                localStorage.setItem(KEY, isLight ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+    <!-- ADMIN DECRYPTION LOGIC -->
+    <script>
+        const decryptBtn = document.getElementById('decryptBtn');
+        const resultBox = document.getElementById('resultBox');
+        let lockTimer;
+
+        decryptBtn.addEventListener('click', async () => {
+            const pin = document.getElementById('adminPin').value;
+            const phone = document.getElementById('targetPhone').value;
+            const errorMsg = document.getElementById('errorMsg');
+            
+            decryptBtn.innerText = "DECRYPTING...";
+            errorMsg.classList.add('hidden');
+            resultBox.classList.add('hidden');
+            clearTimeout(lockTimer);
+
+            try {
+                const res = await fetch("http://127.0.0.1:8000/api/vault/retrieve", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ phone: phone, admin_pin: pin })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    document.getElementById('userName').innerText = `IDENTITY: ${data.first_name.toUpperCase()} ${data.last_name.toUpperCase()}`;
+                    document.getElementById('userPassword').innerText = data.decrypted_password;
+                    document.getElementById('retrievedImage').src = data.decrypted_image;
+                    resultBox.classList.remove('hidden');
+                    
+                    // Ephemeral Display Logic
+                    let timeLeft = 15;
+                    document.getElementById('timer').innerText = timeLeft;
+                    lockTimer = setInterval(() => {
+                        timeLeft--;
+                        document.getElementById('timer').innerText = timeLeft;
+                        if (timeLeft <= 0) {
+                            clearInterval(lockTimer);
+                            resultBox.classList.add('hidden');
+                            document.getElementById('adminPin').value = '';
+                            errorMsg.innerHTML = "<h4>[!] VAULT AUTO-LOCKED FOR SECURITY.</h4>";
+                            errorMsg.classList.remove('hidden');
+                            errorMsg.style.color = "#10b981";
+                        }
+                    }, 1000);
+                } else {
+                    errorMsg.innerHTML = `<h4>[!] ERROR: ${data.error}</h4>`;
+                    errorMsg.classList.remove('hidden');
+                    errorMsg.style.color = "#ef4444";
+                }
+            } catch (e) {
+                errorMsg.innerHTML = "<h4>[!] SYSTEM ERROR: Backend Offline.</h4>";
+                errorMsg.classList.remove('hidden');
+                errorMsg.style.color = "#ef4444";
+            }
+            decryptBtn.innerText = "AUTHORIZE DECRYPTION ->";
+        });
+    </script>
+
+</body>
+</html>

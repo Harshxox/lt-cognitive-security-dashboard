@@ -23,10 +23,56 @@ document.addEventListener('DOMContentLoaded', () => {
     let userPersonalData = [];
 
     if (toggleView) toggleView.addEventListener('click', () => { const t = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password'; passwordInput.setAttribute('type', t); toggleView.textContent = t === 'password' ? '👁️' : '🙈'; });
+    
     if (continueBtn) continueBtn.addEventListener('click', () => { userPersonalData = [(firstNameInput?.value || '').toLowerCase(), (lastNameInput?.value || '').toLowerCase(), (phoneInput?.value || '')]; if (dobInput?.value) { const [y, m, d] = dobInput.value.split('-'); userPersonalData.push(y, m, d, `${d}${m}${y}`, `${y}${m}${d}`); } userPersonalData = userPersonalData.filter(i => i !== ""); step1.classList.add('hidden'); step2.classList.remove('hidden'); passwordInput.focus(); });
-    if (backBtn) backBtn.addEventListener('click', () => { step2.classList.add('hidden'); step1.classList.remove('hidden'); });
-    if (openMnemonicBtn) openMnemonicBtn.addEventListener('click', () => { step2.classList.add('hidden'); step3.classList.remove('hidden'); const pools = [["Favorite animal?", "Childhood hero?"], ["City to visit?", "Dream vacation?"], ["Favorite dessert?", "Daily gadget?"]]; ans1.placeholder = pools[0][Math.floor(Math.random() * pools[0].length)]; ans2.placeholder = pools[1][Math.floor(Math.random() * pools[1].length)]; ans3.placeholder = pools[2][Math.floor(Math.random() * pools[2].length)]; });
-    if (backToAnalyzerBtn) backToAnalyzerBtn.addEventListener('click', () => { step3.classList.add('hidden'); step2.classList.remove('hidden'); });
+    
+    // Go back to Step 1 and wipe the password clean
+    if (backBtn) backBtn.addEventListener('click', () => { 
+        step2.classList.add('hidden'); 
+        step1.classList.remove('hidden'); 
+        
+        if (passwordInput) {
+            passwordInput.value = '';
+            passwordInput.dispatchEvent(new Event('input')); 
+        }
+    });
+    
+    // Wipe previous answers clean every time Step 3 opens
+    if (openMnemonicBtn) openMnemonicBtn.addEventListener('click', () => { 
+        step2.classList.add('hidden'); 
+        step3.classList.remove('hidden'); 
+        
+        if(ans1) ans1.value = '';
+        if(ans2) ans2.value = '';
+        if(ans3) ans3.value = '';
+        
+        if(resultBox) resultBox.classList.add('hidden');
+        if(generatedImage) { generatedImage.src = ''; generatedImage.classList.add('hidden'); }
+        if(downloadImageBtn) downloadImageBtn.classList.add('hidden');
+
+        const pools = [["Favorite animal?", "Childhood hero?"], ["City to visit?", "Dream vacation?"], ["Favorite dessert?", "Daily gadget?"]]; 
+        ans1.placeholder = pools[0][Math.floor(Math.random() * pools[0].length)]; 
+        ans2.placeholder = pools[1][Math.floor(Math.random() * pools[1].length)]; 
+        ans3.placeholder = pools[2][Math.floor(Math.random() * pools[2].length)]; 
+    });
+
+    // Go back to Step 2 and wipe the AI answers clean
+    if (backToAnalyzerBtn) backToAnalyzerBtn.addEventListener('click', () => { 
+        step3.classList.add('hidden'); 
+        step2.classList.remove('hidden'); 
+        
+        if(ans1) ans1.value = '';
+        if(ans2) ans2.value = '';
+        if(ans3) ans3.value = '';
+        
+        if(resultBox) resultBox.classList.add('hidden');
+        if(generatedImage) { 
+            generatedImage.src = ''; 
+            generatedImage.classList.add('hidden'); 
+        }
+        if(downloadImageBtn) downloadImageBtn.classList.add('hidden');
+    });
+    
     [sug1, sug2, sug3].forEach(btn => { if (btn) btn.addEventListener('click', () => { passwordInput.value = btn.innerText; passwordInput.dispatchEvent(new Event('input')); }); });
 
     // 3. SECURE API BREACH CHECK (STABLE)
@@ -76,18 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (leaks === 0) { breachStatusLi.textContent = "✅ Safe: No known breaches found."; } else if (leaks === -1) { breachStatusLi.textContent = "⚠️ Network error checking databases."; }
     });
 
-    // 5. LOCAL AI IMAGE GENERATOR (UPDATED PROMPT)
+    // 5. LOCAL AI IMAGE GENERATOR & SECURE VAULT SAVE
     if (buildMnemonicBtn) buildMnemonicBtn.addEventListener('click', async () => {
         const w1 = ans1?.value || "Ironman"; const w2 = ans2?.value || "Song"; const w3 = ans3?.value || "Cake";
         const sym = ['@', '#', '$', '%', '*', '&', '!'][Math.floor(Math.random() * 7)];
 
-        // Generate the random number here so we can pass it to the prompt
         const num = Math.floor(Math.random() * 90 + 10);
-
         const pwd = `${w1.charAt(0).toUpperCase() + w1.slice(1)}${w2.charAt(0).toUpperCase() + w2.slice(1)}${w3.charAt(0).toUpperCase() + w3.slice(1)}${sym}${num}`;
         if (finalMnemonic) finalMnemonic.innerText = pwd;
 
-        // 🔥 NEW DYNAMIC PROMPT INCLUDES THE NUMBER 🔥
         const aiPrompt = `A masterpiece digital illustration of ${w1} wearing a futuristic jacket with the massive glowing number ${num} boldly printed on the chest, standing in ${w2} holding a ${w3}, highly detailed, breathtaking concept art.`;
 
         if (resultBox) resultBox.classList.remove('hidden'); if (generatedImage) generatedImage.classList.add('hidden'); if (stubIcon) stubIcon.classList.remove('hidden');
@@ -95,12 +138,41 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultBox) resultBox.scrollIntoView({ behavior: 'smooth' });
 
         try {
+            // 1. Fetch the AI Image
             const response = await fetch("http://127.0.0.1:8000/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prompt: aiPrompt }) });
             if (!response.ok) throw new Error("Local server down.");
             const data = await response.json();
+            
             if (stubIcon) stubIcon.classList.add('hidden'); if (promptStubText) promptStubText.classList.add('hidden');
             if (generatedImage) { generatedImage.src = data.image_base64; generatedImage.classList.remove('hidden'); }
             if (downloadImageBtn) downloadImageBtn.classList.remove('hidden');
+
+            // 🚨 2. SECURE VAULT TRANSFER (MONGODB)
+            console.log("🔒 Securing data to database...");
+            const vaultPayload = {
+                first_name: document.getElementById('firstName')?.value || "Unknown",
+                last_name: document.getElementById('lastName')?.value || "User",
+                phone: document.getElementById('phone')?.value || "0000000000",
+                password: pwd, 
+                image_base64: data.image_base64 
+            };
+
+            try {
+                const vaultResponse = await fetch("http://127.0.0.1:8000/api/vault/save", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(vaultPayload)
+                });
+
+                if(vaultResponse.ok) {
+                    console.log("✅ Identity and Assets encrypted and saved to MongoDB!");
+                } else {
+                    console.error("⚠️ Failed to save to secure vault.");
+                }
+            } catch(e) {
+                console.error("⚠️ Vault API unreachable: ", e);
+            }
+
         } catch (error) {
             console.error(error);
             if (promptStubText) { promptStubText.innerText = `⚠️ ERROR: Backend Offline. Did you start Python?`; promptStubText.style.color = "#ef4444"; }
@@ -135,5 +207,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 6. 🚨 LIVE CYBER NEWS FETCHER 
+    async function fetchCyberNews() {
+        const ticker = document.getElementById('cyberTicker');
+        if (!ticker) return; 
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/cyber-news");
+            if (!response.ok) throw new Error("Backend connection failed");
+            const data = await response.json();
+            ticker.innerText = data.fact;
+        } catch (error) {
+            console.error("Live Feed Error:", error);
+            ticker.innerText = "🛡️ SECURE ENVIRONMENT ACTIVE | Unable to reach external intelligence server. Ensure Python backend is running.";
+        }
+    }
+    fetchCyberNews();
+    setInterval(fetchCyberNews, 300000); // Refresh every 5 mins
 
 });
