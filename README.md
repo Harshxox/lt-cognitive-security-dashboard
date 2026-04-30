@@ -84,3 +84,9 @@ In your activated terminal, boot the FastAPI server:
 ```bash
 uvicorn server:app
 ```
+⚠️ Note: On the first run, the local Stable Diffusion model (~4GB) will download automatically.
+
+### Step 4: Launch the Interfaces
+To create a user identity:
+* Open the project folder in Visual Studio Code.
+* Right-click index.html and select "Open with Live Server".
