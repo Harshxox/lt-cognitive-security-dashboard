@@ -33,7 +33,7 @@ An enterprise-grade Identity Setup and Data Vault system designed for high-secur
 > *The Python FastAPI backend securely passing prompts to the local Stable Diffusion model to generate a downloadable visual asset.*
 
 ### 3. The Zero-Trust Admin Decryption Portal
-*(Add a screenshot of your new admin.html interface here)*
+![Admin](./photos/admin.jpeg)
 > *The restricted admin dashboard. Data is decrypted entirely in-memory and features a 15-second ephemeral auto-lock to prevent "shoulder surfing" data leaks.*
 
 ---
