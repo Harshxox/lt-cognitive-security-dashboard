@@ -37,6 +37,9 @@ An enterprise-grade Identity Setup and Data Vault system designed for high-secur
 ![Admin](./photos/admin.jpeg)
 > *The restricted admin dashboard. Data is decrypted entirely in-memory and features a 15-second ephemeral auto-lock to prevent "shoulder surfing" data leaks.*
 
+### 4. Enterprise Audit Logging & Brute-Force Shields
+![Audit](./photos/audit.jpeg)
+> *The backend actively blocking unauthorized API requests and recording immutable audit logs to the secondary MongoDB collection.*
 ---
 
 ## 🛠️ Technology Stack
@@ -101,5 +104,3 @@ To view the non-repudiable audit trail, open a secondary terminal window and run
 python audit_viewer.py
 ```
 ***
-
-**Tip:** I left placeholders like `*(Insert your original image link here)*` so you can quickly paste those awesome GitHub image URLs you already have into the new design! Make sure to take a fresh screenshot of the `admin.html` page running and upload that as well!
