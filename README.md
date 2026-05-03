@@ -38,7 +38,7 @@ An enterprise-grade Identity Setup and Data Vault system designed for high-secur
 > *The restricted admin dashboard. Data is decrypted entirely in-memory and features a 15-second ephemeral auto-lock to prevent "shoulder surfing" data leaks.*
 
 ### 4. Enterprise Audit Logging & Brute-Force Shields
-![Audit](./photos/audit.jpeg)
+![Audit](./photos/audit.png)
 > *The backend actively blocking unauthorized API requests and recording immutable audit logs to the secondary MongoDB collection.*
 ---
 
